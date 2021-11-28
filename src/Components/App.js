@@ -9,15 +9,9 @@ const App = () => {
     <>
       <h1>Phonebook</h1>
       <ContactForm />
-      {/* onSubmit={addItem}  */}
       <h2>Contacts</h2>
       <FilterField />
-      {/* searchQuery={filter} onChange={onChangeFilter}  */}
-      <ContactList
-      // items={items}
-      // onHandleDelete={deleteItem}
-      // filteredContactsByInputValue={filteredContactsByInputValue()}
-      />
+      <ContactList />
     </>
   );
 };

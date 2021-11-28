@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
-// import { connect } from 'react-redux';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { deleteContactAction } from '../../redux/actions/phoneBookActions';
 
-const ContactList = ({ items, onHandleDelete }) => {
+const ContactList = () => {
+  const dispatch = useDispatch();
+  const items = useSelector(state =>
+    state.contacts.items.filter(item =>
+      item.name
+        .toLowerCase()
+        .trim()
+        .includes(state.contacts.filter.toLowerCase().trim()),
+    ),
+  );
+
   return (
     <ul className={s.contactList}>
       {items.map(({ id, name, number }) => (
@@ -17,7 +26,7 @@ const ContactList = ({ items, onHandleDelete }) => {
             type="button"
             className={s.deleteBtn}
             onClick={() => {
-              onHandleDelete(id);
+              dispatch(deleteContactAction(id));
             }}
           >
             Delete
@@ -28,24 +37,9 @@ const ContactList = ({ items, onHandleDelete }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  items: state.contacts.items.filter(item =>
-    item.name
-      .toLowerCase()
-      .trim()
-      .includes(state.contacts.filter.toLowerCase().trim()),
-  ),
-});
-
-const mapDispatchToProps = dispatch => ({
-  onHandleDelete: id => {
-    dispatch(deleteContactAction(id));
-  },
-});
-
 ContactList.propTypes = {
   items: PropTypes.array,
   onHandleDelete: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+export default ContactList;

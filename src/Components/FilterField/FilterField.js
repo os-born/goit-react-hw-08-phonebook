@@ -1,10 +1,13 @@
 import React from 'react';
 import s from './FilterField.module.css';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getFilterValueAction } from '../../redux/actions/phoneBookActions';
 
-const FilterField = ({ filter, onChange }) => {
+const FilterField = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(state => state.contacts.filter);
+
   return (
     <div className={s.filterField__conteiner}>
       <label className={s.filterField__label}>
@@ -13,7 +16,7 @@ const FilterField = ({ filter, onChange }) => {
           type="text"
           name="filter"
           value={filter}
-          onChange={e => onChange(e.target.value)}
+          onChange={e => dispatch(getFilterValueAction(e.target.value))}
           className={s.filterField__input}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           required
@@ -23,17 +26,9 @@ const FilterField = ({ filter, onChange }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  filter: state.contacts.filter,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onChange: value => dispatch(getFilterValueAction(value)),
-});
-
 FilterField.propTypes = {
-  filter: PropTypes.string.isRequired,
+  filter: PropTypes.string,
   onChange: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterField);
+export default FilterField;

@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import s from './ContactForm.module.css';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addContactAction } from '../../redux/actions/phoneBookActions';
 
 const initialContactState = { name: '', number: '' };
 
-const ContactForm = ({ allContacts, addNewContact }) => {
+const ContactForm = () => {
   const [contact, setContact] = useState(initialContactState);
+
+  const dispatch = useDispatch();
+  const allContacts = useSelector(state => state.contacts.items);
 
   const onHandleSubmit = e => {
     e.preventDefault();
@@ -16,7 +19,7 @@ const ContactForm = ({ allContacts, addNewContact }) => {
     if (arrNames.includes(contact.name)) {
       alert(`${contact.name} is already in contacts`);
     } else {
-      addNewContact(contact);
+      dispatch(addContactAction(contact));
       setContact(initialContactState);
     }
   };
@@ -60,18 +63,8 @@ const ContactForm = ({ allContacts, addNewContact }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  allContacts: state.contacts.items,
-});
-
-const mapDispatchToProps = dispatch => ({
-  addNewContact: contact => {
-    dispatch(addContactAction(contact));
-  },
-});
-
 ContactForm.propTypes = {
   allContacts: PropTypes.array,
   addNewContact: PropTypes.func,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+export default ContactForm;
