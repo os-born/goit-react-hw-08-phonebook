@@ -1,29 +1,26 @@
-// import { createStore } from 'redux';
-// import {
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-import { configureStore /*getDefaultMiddleware*/ } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import phoneBookReducers from './reducers/phoneBookReducers';
-// import { composeWithDevTools } from 'redux-devtools-extension';
-// import rootReducer from './rootReducer';
-
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-// ];
 
 export const store = configureStore({
   reducer: {
     contacts: phoneBookReducers,
   },
-  // middleware,
   devTools: process.env.NODE_ENV === 'development',
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [
+          'contacts/fetchContactsRequest',
+          'contacts/fetchContactsSuccess',
+          'contacts/fetchContactsError',
+          'contacts/addContactRequest',
+          'contacts/addContactSuccess',
+          'contacts/addContactError',
+          'contacts/deleteContactRequest',
+          'contacts/deleteContactSuccess',
+          'contacts/deleteContactError',
+          'contacts/setFilterValue',
+        ],
+      },
+    }),
 });

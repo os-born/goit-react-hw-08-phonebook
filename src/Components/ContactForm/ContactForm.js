@@ -2,7 +2,7 @@ import { useState } from 'react';
 import s from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContactAction } from '../../redux/actions/phoneBookActions';
+import { addContact } from '../../redux/operations/contactsOperations';
 
 const initialContactState = { name: '', number: '' };
 
@@ -19,7 +19,7 @@ const ContactForm = () => {
     if (arrNames.includes(contact.name)) {
       alert(`${contact.name} is already in contacts`);
     } else {
-      dispatch(addContactAction(contact));
+      dispatch(addContact(contact));
       setContact(initialContactState);
     }
   };

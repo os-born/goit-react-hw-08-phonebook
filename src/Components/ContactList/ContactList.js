@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContactAction } from '../../redux/actions/phoneBookActions';
+import {
+  getContacts,
+  deleteContact,
+} from '../../redux/operations/contactsOperations';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -15,6 +18,10 @@ const ContactList = () => {
     ),
   );
 
+  useEffect(() => {
+    dispatch(getContacts());
+  }, [dispatch]);
+
   return (
     <ul className={s.contactList}>
       {items.map(({ id, name, number }) => (
@@ -26,7 +33,7 @@ const ContactList = () => {
             type="button"
             className={s.deleteBtn}
             onClick={() => {
-              dispatch(deleteContactAction(id));
+              dispatch(deleteContact(id));
             }}
           >
             Delete
