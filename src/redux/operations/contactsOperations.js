@@ -13,11 +13,11 @@ import {
 
 axios.defaults.baseURL = 'http://localhost:4040';
 
-const getContacts = () => async dispatch => {
+const fetchContacts = () => async dispatch => {
   dispatch(fetchContactsRequest());
   try {
-    const contacts = await axios.get('/contacts');
-    dispatch(fetchContactsSuccess(contacts));
+    const { data } = await axios.get('/contacts');
+    dispatch(fetchContactsSuccess(data));
   } catch (error) {
     dispatch(fetchContactsError(error));
   }
@@ -43,4 +43,4 @@ const deleteContact = id => async dispatch => {
   }
 };
 
-export { getContacts, addContact, deleteContact };
+export { fetchContacts, addContact, deleteContact };

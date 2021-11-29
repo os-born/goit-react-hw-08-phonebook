@@ -3,6 +3,7 @@ import s from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from '../../redux/operations/contactsOperations';
+import { getAllContacts } from '../../redux/selectors/phoneBookSelectors';
 
 const initialContactState = { name: '', number: '' };
 
@@ -10,7 +11,7 @@ const ContactForm = () => {
   const [contact, setContact] = useState(initialContactState);
 
   const dispatch = useDispatch();
-  const allContacts = useSelector(state => state.contacts.items);
+  const allContacts = useSelector(state => getAllContacts(state));
 
   const onHandleSubmit = e => {
     e.preventDefault();
