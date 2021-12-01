@@ -1,0 +1,17 @@
+.navListItem:not(:last-child) {
+    margin-right: 20px;
+}
+
+.navItemLink {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.navItemLink:hover {
+    color: royalblue;
+}
+
+.navItemLinkActive {
+    color: royalblue;
+}

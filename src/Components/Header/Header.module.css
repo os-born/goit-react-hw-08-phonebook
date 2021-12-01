@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    height: 60px;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkgrey;
+}
+
+.logo {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: royalblue;
+}
