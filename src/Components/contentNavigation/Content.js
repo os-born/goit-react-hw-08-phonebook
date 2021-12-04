@@ -4,8 +4,8 @@ import { Route, Switch } from 'react-router';
 const Content = ({ routes }) => {
   return (
     <Switch>
-      {routes.map(({ path, exact, component }) => (
-        <Route path={path} exact={exact} component={component} />
+      {routes.map(({ path, component }) => (
+        <Route key={path} path={path} exact component={component} />
       ))}
     </Switch>
   );

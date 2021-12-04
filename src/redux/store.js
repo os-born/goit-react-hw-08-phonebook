@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import phoneBookReducers from './reducers/phoneBookReducers';
+import authReducer from './auth/reducers/authReducers';
+import phoneBookReducer from './contacts/reducers/phoneBookReducers';
 
 export const store = configureStore({
   reducer: {
-    contacts: phoneBookReducers,
+    auth: authReducer,
+    contacts: phoneBookReducer,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware: getDefaultMiddleware =>

@@ -5,21 +5,22 @@
 // import FilterField from './FilterField/FilterField';
 import Header from './Header/Header';
 import Main from './Main/Main';
+import Container from './Container/Container';
 import { IconContext } from 'react-icons';
 
 const App = () => {
   return (
-    <>
+    <Container>
       <IconContext.Provider value={{ color: 'royalblue', size: '3em' }}>
         <Header />
         <Main />
       </IconContext.Provider>
       {/* <h1>Phonebook</h1>
       <ContactForm />
-      <h2>Contacts</h2>
+      <h2>My Contacts</h2>
       <FilterField />
       <ContactList /> */}
-    </>
+    </Container>
   );
 };
 

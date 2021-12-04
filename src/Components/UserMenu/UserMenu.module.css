@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    margin-right: 4px;
+    fill: royalblue;
+}
+
+.name {
+    font-weight: 700;
+    margin-right: 12px;
+    color: royalblue;
+}

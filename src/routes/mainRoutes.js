@@ -1,31 +1,28 @@
 import ContactsPage from '../pages/ContactsPage';
 import HomePage from '../pages/HomePage';
-import AuthPage from '../pages/AuthPage';
+import RegisterPage from '../pages/RegisterPage';
+import LoginPage from '../pages/LoginPage';
 
 const mainRoutes = [
   {
     name: 'home',
     path: '/',
-    exact: true,
     component: HomePage,
   },
   {
-    name: 'my contacts',
+    name: 'contacts',
     path: '/contacts',
-    exact: true,
     component: ContactsPage,
   },
   {
-    name: 'sign Up',
-    path: '/signup',
-    exact: true,
-    component: AuthPage,
+    name: 'register',
+    path: '/register',
+    component: RegisterPage,
   },
   {
-    name: 'sign In',
-    path: '/signin',
-    exact: true,
-    component: AuthPage,
+    name: 'login',
+    path: '/login',
+    component: LoginPage,
   },
 ];
 
