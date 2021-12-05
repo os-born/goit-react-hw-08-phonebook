@@ -1,0 +1,19 @@
+<?xml version="1.0"?><svg width="640" height="479.99999999999994" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <g>
+  <title>Layer 1</title>
+  <defs>
+   <pattern id="gridpattern" patternUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+    <image id="svg_2" x="0" y="0" width="100" height="100"/>
+   </pattern>
+  </defs>
+  <ellipse fill="#ffffff" stroke="#999999" stroke-width="5" cx="331" cy="240" id="svg_1" rx="252" ry="252"/>
+  <ellipse fill="#ffffff" stroke="#999999" stroke-width="5" cx="329.999999" cy="240.999995" rx="230.000005" ry="230.000005" id="svg_3"/>
+  <rect fill="#ffffff" stroke="#999999" stroke-width="0" x="290.000024" y="278.000009" width="91.999996" height="104.000005" id="svg_9"/>
+  <ellipse ry="83" rx="73.909091" id="svg_4" cy="166.909089" cx="332.363798" stroke-width="0" stroke="#999999" fill="#bfbfbf"/>
+  <g id="svg_15">
+   <path id="svg_13" d="m316.645294,257.17041l-118.284317,53.418732l-3.815613,87.759308l270.909195,0l-1.907806,-90.025696l-112.560852,-56.875763l-34.340607,5.723419z" stroke-width="0" stroke="#999999" fill="#bfbfbf"/>
+   <path id="svg_14" d="m308.834778,258.988556c0,0 26.70932,43.879639 26.70932,45.787476c0,1.907837 40.064056,-62.957748 41.971863,-62.957748c1.907806,0 -68.681183,17.170273 -68.681183,17.170273z" stroke-width="0" stroke="#999999" fill="#ffffff"/>
+  </g>
+ </g>
+</svg>

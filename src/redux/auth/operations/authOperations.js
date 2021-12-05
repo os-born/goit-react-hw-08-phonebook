@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { set } from 'immer/dist/internal';
 import {
   registerRequest,
   registerSuccess,
@@ -34,6 +33,7 @@ const register = credentials => async dispatch => {
     token.set(data.token);
   } catch (error) {
     dispatch(registerError(error));
+    alert('Something went wrong! Try again!');
   }
 };
 
@@ -45,6 +45,7 @@ const login = credentials => async dispatch => {
     token.set(data.token);
   } catch (error) {
     dispatch(loginError(error));
+    alert('Something went wrong! Try again!');
   }
 };
 
@@ -56,9 +57,24 @@ const logout = () => async dispatch => {
     token.unset();
   } catch (error) {
     dispatch(logoutError(error));
+    alert('Something went wrong! Try again!');
   }
 };
 
-const getCurrentUser = () => (dispatch, getState) => {};
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+  if (!persistedToken) return;
+  token.set(persistedToken);
+  dispatch(getCurrentUserRequest());
+  try {
+    const { data } = await axios.get('/users/current');
+    dispatch(getCurrentUserSuccess(data));
+  } catch (error) {
+    dispatch(getCurrentUserError(error));
+    alert('Something went wrong! Try again!');
+  }
+};
 
-export { register, login, logout };
+export { register, login, logout, getCurrentUser };

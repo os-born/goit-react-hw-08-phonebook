@@ -1,6 +1,6 @@
 .deleteBtn {
   width: 60px;
-  height: 20px;
+  height: 30px;
   text-align: center;
   margin-left: 20px;
 }
@@ -21,4 +21,8 @@
 .contactList__itemText {
   justify-content: center;
   align-items: center;
+}
+
+.centered{
+  text-align: center;
 }

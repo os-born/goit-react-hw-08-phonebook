@@ -2,7 +2,7 @@ import React from 'react';
 import s from './FilterField.module.css';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilterValueAction } from '../../redux/actions/phoneBookActions';
+import { getFilterValueAction } from '../../redux/contacts/actions/phoneBookActions';
 
 const FilterField = () => {
   const dispatch = useDispatch();

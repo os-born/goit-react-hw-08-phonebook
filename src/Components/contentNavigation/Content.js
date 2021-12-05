@@ -1,12 +1,21 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Switch } from 'react-router';
+import { getIsLoggedIn } from '../../redux/auth/selectors/authSelectors';
+import { useSelector } from 'react-redux';
+import PrivateRoute from '../PrivateRoute';
+import PublicRoute from '../PublicRoute';
 
 const Content = ({ routes }) => {
+  const isLoggedIn = useSelector(getIsLoggedIn);
   return (
     <Switch>
-      {routes.map(({ path, component }) => (
-        <Route key={path} path={path} exact component={component} />
-      ))}
+      {routes.map(route =>
+        route.isPrivate ? (
+          <PrivateRoute {...route} isLoggedIn={isLoggedIn} key={route.path} />
+        ) : (
+          <PublicRoute {...route} isLoggedIn={isLoggedIn} key={route.path} />
+        ),
+      )}
     </Switch>
   );
 };

@@ -6,8 +6,15 @@ const Navigation = ({ routes }) => {
   return (
     <nav>
       <ul className={s.navList}>
-        {routes.map(({ name, path, exact = true }) => (
-          <NavigationItem key={path} name={name} path={path} exact={exact} />
+        {routes.map(({ name, path, exact, isPrivate, isRestricted }) => (
+          <NavigationItem
+            key={path}
+            name={name}
+            path={path}
+            exact={JSON.parse(exact)}
+            isPrivate={isPrivate}
+            isRestricted={isRestricted}
+          />
         ))}
       </ul>
     </nav>

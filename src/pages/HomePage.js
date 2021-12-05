@@ -6,13 +6,16 @@ const styles = {
   appImg: {
     width: '500px',
   },
+  homePageContainer: {
+    textAlign: 'center',
+  },
 };
 
 const HomePage = () => {
   return (
     <Container>
-      <h1>PHONEBOOK APP</h1>
-      <div>
+      <div style={styles.homePageContainer}>
+        <h1>PHONEBOOK APP</h1>
         <img
           src={PhoneBookHomePageImg}
           alt="PhoneBookImg"

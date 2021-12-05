@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchContacts,
   deleteContact,
-} from '../../redux/operations/contactsOperations';
-import * as selectors from '../../redux/selectors/phoneBookSelectors';
+} from '../../redux/contacts/operations/contactsOperations';
+import * as selectors from '../../redux/contacts/selectors/phoneBookSelectors';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -20,8 +20,10 @@ const ContactList = () => {
 
   return (
     <>
-      {isLoading && <p>Loading ...</p>}
-      {error && <p>{' Sorry, something wrong: ' + error}</p>}
+      {isLoading && <p className={s.centered}>Loading ...</p>}
+      {error && (
+        <p className={s.centered}>{' Sorry, something wrong: ' + error}</p>
+      )}
       <ul className={s.contactList}>
         {items.map(({ id, name, number }) => (
           <li key={id} className={s.contactList__item}>

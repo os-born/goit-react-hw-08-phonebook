@@ -2,8 +2,8 @@ import { useState } from 'react';
 import s from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../redux/operations/contactsOperations';
-import { getAllContacts } from '../../redux/selectors/phoneBookSelectors';
+import { addContact } from '../../redux/contacts/operations/contactsOperations';
+import { getAllContacts } from '../../redux/contacts/selectors/phoneBookSelectors';
 
 const initialContactState = { name: '', number: '' };
 
@@ -30,37 +30,40 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={onHandleSubmit} className={s.contactForm}>
-      <label className={s.contactForm__label}>
-        Name
-        <input
-          type="text"
-          name="name"
-          value={contact.name}
-          onChange={onHandleChange}
-          className={s.contactForm__input}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          required
-        />
-      </label>
-      <label className={s.contactForm__label}>
-        Number
-        <input
-          type="tel"
-          name="number"
-          value={contact.number}
-          onChange={onHandleChange}
-          className={s.contactForm__input}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-          required
-        />
-      </label>
-      <button type="submit" className={s.contactForm__btn}>
-        Add contact
-      </button>
-    </form>
+    <>
+      <h1 className={s.contactForm__title}>My Contacts</h1>
+      <form onSubmit={onHandleSubmit} className={s.contactForm}>
+        <label className={s.contactForm__label}>
+          Name
+          <input
+            type="text"
+            name="name"
+            value={contact.name}
+            onChange={onHandleChange}
+            className={s.contactForm__input}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+            required
+          />
+        </label>
+        <label className={s.contactForm__label}>
+          Number
+          <input
+            type="tel"
+            name="number"
+            value={contact.number}
+            onChange={onHandleChange}
+            className={s.contactForm__input}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+            required
+          />
+        </label>
+        <button type="submit" className={s.contactForm__btn}>
+          Add contact
+        </button>
+      </form>
+    </>
   );
 };
 
